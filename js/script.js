@@ -49,7 +49,7 @@ var quotes = [
 ];
 
 /***
-  random quote
+  generate random quote
 ***/
 
 function getRandomQuote() {
@@ -58,7 +58,19 @@ function getRandomQuote() {
 }
 
 /***
-  generate HTML and print in the DOM 
+  generate random color
+***/
+
+function getRandomColor() {
+  var randomColor = {};
+  randomColor.red = Math.floor(Math.random() * 255);
+  randomColor.green = Math.floor(Math.random() * 255);
+  randomColor.blue = Math.floor(Math.random() * 255);
+  return randomColor;
+}
+
+/***
+  concatenate HTML, set background color, and print in the DOM 
 ***/
 
 function printQuote() {
@@ -73,18 +85,28 @@ function printQuote() {
   }
 
   if(selectedQuote.year){
-    htmlToPrint += ` <span class="year"> ${selectedQuote.year} </span>`;
+    htmlToPrint += `<span class="year"> ${selectedQuote.year} </span>`;
+  }
+
+  if(selectedQuote.category){
+    htmlToPrint += `<span class="category"> ${selectedQuote.category} </span>`
   }
 
   htmlToPrint += '</p>';
   
-  var quoteBox = document.getElementById('quote-box');
-  quoteBox.innerHTML = htmlToPrint;
+  document.getElementById('quote-box').innerHTML = htmlToPrint;
 
-  return htmlToPrint
+  var primaryColor = getRandomColor();
+  document.getElementById('pageBody').style =  `background-color: rgb(${primaryColor.red},${primaryColor.green},${primaryColor.blue})`;
 }
 
-console.log(printQuote());
+printQuote();
+
+/***
+  auto refresh quote
+***/
+
+var autoRefresh = window.setInterval(printQuote, 20000);
 
 /***
   When the "Show another quote" button is clicked, the event listener 

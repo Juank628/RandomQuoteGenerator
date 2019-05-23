@@ -4,7 +4,6 @@
  */
 
 body {
-  background-color: #36b55c;
   color: white;
   font-family: 'Playfair Display', serif;
 }
@@ -71,13 +70,22 @@ body {
   font-style: normal;
 }
 
+.category {
+  font-style: italic;
+}
+
+.category:before {
+  content: ", ";
+  font-style: normal;
+}
+
 #loadQuote {
   position: fixed;
   width: 12em;
   display: inline-block;
   left: 50%;
   margin-left: -6em;
-  bottom: 150px;
+  bottom: 100px;
   border-radius: 4px;
   border: 2px solid #fff;
   color: #fff;
