@@ -51,8 +51,7 @@ var quotes = [
     source: 'Edgar Allan Poe',
     category: "literature"
   },
-]
-
+];
 
 /***
   Create the `getRandomQuote` function to:
@@ -60,8 +59,10 @@ var quotes = [
    - Cse the random number to `return` a random quote object from the `quotes` array.
 ***/
 
-
-
+function getRandomQuote() {
+  var randomNumber = Math.floor(Math.random() * quotes.length);
+  return quotes[randomNumber];
+}
 
 /***
   Create the `printQuote` function to: 
@@ -76,8 +77,20 @@ var quotes = [
    - Set the `innerHTML` of the `quote-box` div to the HTML string. 
 ***/
 
+function printQuote() {
+  selectedQuote = getRandomQuote();
+  htmlQuote = `<p>"${selectedQuote.quote}"</p>`;
+  htmlDetails =
+    "<p>" +
+    selectedQuote.source  + ", " +
+    (selectedQuote.citation === undefined ? '' : selectedQuote.citation) + ", " +
+    (selectedQuote.year === undefined ? '' : selectedQuote.year) + 
+    "</p>";
+  htmlCategory = selectedQuote.category ? `<p>${selectedQuote.category}</p>` : null;
+  return htmlQuote + htmlDetails + htmlCategory
+}
 
-
+console.log(printQuote());
 
 /***
   When the "Show another quote" button is clicked, the event listener 
