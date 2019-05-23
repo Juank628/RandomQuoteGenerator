@@ -88,16 +88,12 @@ function printQuote() {
     htmlToPrint += `<span class="year"> ${selectedQuote.year} </span>`;
   }
 
-  if(selectedQuote.category){
-    htmlToPrint += `<span class="category"> ${selectedQuote.category} </span>`
-  }
-
-  htmlToPrint += '</p>';
+  htmlToPrint += `<span class="category"> ${selectedQuote.category} </span></p>`
   
   document.getElementById('quote-box').innerHTML = htmlToPrint;
 
   var primaryColor = getRandomColor();
-  document.getElementById('pageBody').style =  `background-color: rgb(${primaryColor.red},${primaryColor.green},${primaryColor.blue})`;
+  document.body.style.backgroundColor = `rgb(${primaryColor.red},${primaryColor.green},${primaryColor.blue})`;
 }
 
 printQuote();
